@@ -16,6 +16,7 @@ class CreateScrapesTable extends Migration
         Schema::create('scrapes', function (Blueprint $table) {
             $table->id();
             $table->integer('country_id');
+            $table->string('scrape_time');
             $table->integer('scrape_locations_count');
             $table->integer('scrape_all_links_count');
             $table->integer('scrape_new_links_count');

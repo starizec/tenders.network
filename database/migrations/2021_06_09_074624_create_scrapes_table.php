@@ -30,6 +30,6 @@ class CreateScrapesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('scrape_logs');
+        Schema::dropIfExists('scrapes');
     }
 }

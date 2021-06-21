@@ -18,18 +18,20 @@
             <th>Trajanje scrape-a</th>
             <th>404</th>
             <th>5xx</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
             @foreach($scrapes as $scrape)
                 <tr>
-                    <td>{{ date('d-m-Y', strtotime($scrape->created_at)) }}</td>
-                    <td>{{ $scrape->scrape_locations_count }}</td>
-                    <td>{{ $scrape->scrape_all_links_count }}</td>
-                    <td>{{ $scrape->scrape_new_links_count }}</td>
+                    <td>{{ date('d.m.Y', strtotime($scrape->created_at)) }}</td>
+                    <td>{{ number_format($scrape->scrape_locations_count) }}</td>
+                    <td>{{ number_format($scrape->scrape_all_links_count) }}</td>
+                    <td>{{ number_format($scrape->scrape_new_links_count) }}</td>
                     <td>{{ gmdate("H:i:s", round($scrape->scrape_time, 2)) }}</td>
                     <td><span class="badge bg-danger">{{ $scrape->scrape_404_count }}</span></td>
                     <td><span class="badge bg-warning">{{ $scrape->scrape_5xx_count }}</span></td>
+                    <td><i class="fas fa-download"></i></td>
               </tr>
             @endforeach
         </tbody>

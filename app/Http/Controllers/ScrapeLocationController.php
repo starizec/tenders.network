@@ -12,9 +12,12 @@ class ScrapeLocationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($http_status_code, $start, $end)
     {
-        //
+        $scrape_locations_instance = new ScrapeLocation();
+        $scrape_locations = $scrape_locations_instance->getScrapeLocations($http_status_code, $start, $end, 50);
+        
+        return view('scrape_locations.index', ['scrape_locations' => $scrape_locations]);
     }
 
     /**
@@ -44,9 +47,9 @@ class ScrapeLocationController extends Controller
      * @param  \App\Models\ScrapeLocation  $scrapeLocation
      * @return \Illuminate\Http\Response
      */
-    public function show(ScrapeLocation $scrapeLocation)
+    public function show($status_code, $start, $end)
     {
-        //
+        
     }
 
     /**

@@ -19,6 +19,7 @@
             <th>404</th>
             <th>5xx</th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -29,9 +30,10 @@
                     <td>{{ number_format($scrape->scrape_all_links_count) }}</td>
                     <td>{{ number_format($scrape->scrape_new_links_count) }}</td>
                     <td>{{ gmdate("H:i:s", round($scrape->scrape_time, 2)) }}</td>
-                    <td><span class="badge bg-danger">{{ $scrape->scrape_404_count }}</span></td>
-                    <td><span class="badge bg-warning">{{ $scrape->scrape_5xx_count }}</span></td>
+                    <td><a href="/scrapes/locations/404/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><span class="badge bg-danger">{{ $scrape->scrape_404_count }}</span></a></td>
+                    <td><a href="/scrapes/locations/5xx/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><span class="badge bg-warning">{{ $scrape->scrape_5xx_count }}</span></a></td>
                     <td><i class="fas fa-download"></i></td>
+                    <td><a href="/scrapes/locations/200/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><i class="fas fa-search"></i></a></td>
               </tr>
             @endforeach
         </tbody>

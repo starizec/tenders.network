@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ScrapeController;
+use App\Http\Controllers\ScrapeLocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,5 @@ Route::get('/', function () {
 
 Route::prefix('scrapes')->group(function () {
     Route::get('/', [ScrapeController::class, 'index']);
+    Route::get('/locations/{http_status_code}/{start}/{end}', [ScrapeLocationController::class, 'index']);
 });

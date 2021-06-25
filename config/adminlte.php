@@ -249,6 +249,12 @@ return [
             'url'  => 'scrapes',
             'icon' => 'fas fa-fw fa-search-plus',
         ],
+        ['header' => 'Lokacije'],
+        [
+            'text' => 'Sve lokacije',
+            'url'  => 'locations',
+            'icon' => 'fas fa-fw fa-map-pin',
+        ],
     ],
 
     /*

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScrapeController;
 use App\Http\Controllers\ScrapeLocationController;
 use App\Http\Controllers\ScrapeDataController;
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('scrapes')->group(function () {
+Route::prefix('scrapes')->group(function(){
     Route::get('/', [ScrapeController::class, 'index']);
     Route::get('/locations/{http_status_code}/{start}/{end}', [ScrapeLocationController::class, 'index']);
     Route::post('/scrape-data', [ScrapeDataController::class, 'download'])->name('download_scrape');
+});
+
+Route::prefix('locations')->group(function(){
+    Route::get('/', [LocationController::class, 'index']);
 });

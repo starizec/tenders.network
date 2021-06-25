@@ -25,9 +25,11 @@ Route::get('/', function () {
 Route::prefix('scrapes')->group(function(){
     Route::get('/', [ScrapeController::class, 'index']);
     Route::get('/locations/{http_status_code}/{start}/{end}', [ScrapeLocationController::class, 'index']);
-    Route::post('/scrape-data', [ScrapeDataController::class, 'download'])->name('download_scrape');
+    Route::post('/scrape-data', [ScrapeDataController::class, 'download'])->name('download-scrape');
 });
 
 Route::prefix('locations')->group(function(){
     Route::get('/', [LocationController::class, 'index']);
+    Route::get('/{id}/edit', [LocationController::class, 'edit']);
+    Route::post('/update', [LocationController::class, 'update'])->name('update-location');
 });

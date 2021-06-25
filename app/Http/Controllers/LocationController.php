@@ -11,4 +11,12 @@ class LocationController extends Controller
     {   
         return view('locations.index', ['locations' => $location->getLocations()]);
     }
+
+    public function edit(Location $location, $id){
+        return view('locations.edit', ['location' => $location->getLocation($id)]);
+    }
+
+    public function destroy(Request $request){
+        
+    }
 }

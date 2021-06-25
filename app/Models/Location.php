@@ -17,4 +17,16 @@ class Location extends Model
             return $this->where($country_id)->orderBy($order_by)->paginate($per_page);
         }
     }
+
+    public function getLocation($id){
+        return $this->where('id', $id)->first();
+    }
+
+    public function softDelete($id){
+        $this->where('id', $id)->update(['location_status' => 0]);
+    }
+
+    public function delete(){
+        $this->where('id', $id)->delete();
+    }
 }

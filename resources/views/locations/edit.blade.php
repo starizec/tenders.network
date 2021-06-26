@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Lokacije')
+@section('title', 'Izmjena lokacije')
 
 @section('content_header')
-    <h1>Lokacije</h1>
+    <h1>{{ $location->location_name }}</h1>
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col col-lg-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Izmjena lokacije: {{ $location->location_name }}</h3>
+                    <h3 class="card-title">Izmjena podataka lokacije</h3>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('update-location') }}" method="POST">
@@ -65,19 +65,19 @@
                     <table>
                         <tr>
                             <th>Ukupan broj linkova</th>
-                            <td></td>
+                            <td>{{ $total_link_count }}</td>
                         <tr>
                         <tr>
                             <th>Broj linkova - 30 dana</th>
-                            <td></td>
+                            <td>{{ $link_count_30_days }}</td>
                         <tr>
                         <tr>
                             <th>Broj linkova - 60 dana</th>
-                            <td></td>
+                            <td>{{ $link_count_60_days }}</td>
                         <tr>
                         <tr>
                             <th>Broj linkova - 1 godina</th>
-                            <td></td>
+                            <td>{{ $link_count_365_days }}</td>
                         <tr>
                     </table>
                 </div>

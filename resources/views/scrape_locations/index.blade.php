@@ -12,7 +12,7 @@
         <thead>
           <tr>
             <th>Datum</th>
-            <th>Id lokacije</th>
+            <th>Naziv lokacije</th>
             <th>Trajanje scrape-a</th>
             <th>Status</th>
             <th>Broj linkova</th>
@@ -24,7 +24,7 @@
             @foreach($scrape_locations as $scrape_location)
                 <tr>
                     <td>{{ date('d.m.Y', strtotime($scrape_location->created_at)) }}</td>
-                    <td>{{ $scrape_location->location_id }}</td>
+                    <td>{{ $scrape_location->location->location_name }}</td>
                     <td>{{ gmdate("H:i:s", round($scrape_location->location_scrape_time, 2)) }}</td>
                     <td>
                         @if(substr($scrape_location->location_http_status_code, 0, 1) == 4)
@@ -37,7 +37,7 @@
                     </td>
                     <td>{{ $scrape_location->location_all_links_count  }}</td>
                     <td>{{ $scrape_location->location_new_links_count  }}</td>
-                    <td><i class="fas fa-search"></i></td>
+                    <td><a href="/locations/{{ $scrape_location->location_id }}/edit"><i class="fas fa-search"></i></a></td>
               </tr>
             @endforeach
         </tbody>

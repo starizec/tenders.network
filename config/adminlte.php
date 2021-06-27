@@ -246,14 +246,25 @@ return [
         ['header' => 'Scrape'],
         [
             'text' => 'Scrape-ovi',
-            'url'  => 'scrapes',
+            'url'  => '/scrapes',
             'icon' => 'fas fa-fw fa-search-plus',
         ],
         ['header' => 'Lokacije'],
         [
             'text' => 'Sve lokacije',
-            'url'  => 'locations',
+            'url'  => '/locations',
             'icon' => 'fas fa-fw fa-map-pin',
+        ],
+        ['header' => 'Države'],
+        [
+            'text' => 'Sve države',
+            'url'  => '/countries',
+            'icon' => 'fas fa-fw fa-flag',
+        ],
+        [
+            'text' => 'Dodaj državu',
+            'url'  => '/countries/create',
+            'icon' => 'fas fa-fw fa-plus',
         ],
     ],
 

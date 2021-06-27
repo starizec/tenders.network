@@ -41,4 +41,5 @@ Route::prefix('countries')->group(function(){
     Route::post('/store', [CountryController::class, 'store'])->name('store-country');
     Route::get('/{id}/edit', [CountryController::class, 'edit']);
     Route::post('/update', [CountryController::class, 'update'])->name('update-country');
+    Route::post('/select', [CountryController::class, 'select'])->name('select-country');
 });

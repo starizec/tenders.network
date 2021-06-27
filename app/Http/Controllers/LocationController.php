@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Location;
 use App\Models\ScrapeData;
 use Illuminate\Http\Request;
+use Session;
 
 class LocationController extends Controller
 {
     public function index(Location $location)
     {   
-        return view('locations.index', ['locations' => $location->getLocations()]);
+        return view('locations.index', ['locations' => $location->getLocations(Session::get('country_id'))]);
     }
 
     public function edit(Location $location, ScrapeData $scrapedata, $id){

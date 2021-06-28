@@ -314,7 +314,7 @@ return [
                 ],
                 [
                     'text' => 'Dodaj mjesto',
-                    'url'  => '/countries/create',
+                    'url'  => '/places/create',
                     'icon' => 'fas fa-fw fa-plus',
                     'icon_color' => 'success',
                 ],

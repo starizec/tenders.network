@@ -7,6 +7,7 @@ use App\Http\Controllers\ScrapeLocationController;
 use App\Http\Controllers\ScrapeDataController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
 
 /*

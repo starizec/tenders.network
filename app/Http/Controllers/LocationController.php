@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\ScrapeData;
+use App\Models\Place;
 use Illuminate\Http\Request;
 use Session;
 
@@ -14,13 +15,10 @@ class LocationController extends Controller
         return view('locations.index', ['locations' => $location->getLocations(Session::get('country_id'))]);
     }
 
-    public function edit(Location $location, ScrapeData $scrapedata, $id){
-
+    public function edit(Location $location, ScrapeData $scrapedata, Place $place, $id)
+    {
         return view('locations.edit', ['location' => $location->getLocation($id),
-                                       'total_link_count' => $scrapedata->countScrapeData(3650, $id),
-                                       'link_count_30_days' => $scrapedata->countScrapeData(30, $id),
-                                       'link_count_60_days' => $scrapedata->countScrapeData(60, $id),
-                                       'link_count_365_days' => $scrapedata->countScrapeData(365, $id)]);
+                                       'places' => $place->where('country_id', Session::get('country_id'))->get()]);
     }
 
     public function destroy(Request $request){

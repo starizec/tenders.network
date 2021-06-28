@@ -7,6 +7,9 @@
 @stop
 
 @section('content')
+
+    @include('inc.select_country')
+
     <div class="row">
         <div class="col col-lg-6">
             <div class="card">
@@ -16,6 +19,8 @@
                 <div class="card-body">
                     <form action="{{ route('update-location') }}" method="POST">
                         @csrf
+
+                        <input type="hidden" name="country_id" value="{{ Session::get('country_id') }}">
                         
                         <div class="form-group">
                             <label>Naziv lokacije</label>
@@ -25,6 +30,19 @@
                         <div class="form-group">
                             <label>URL lokacije</label>
                             <input type="text" name="location_url" value="{{ $location->location_url }}" class="form-control" placeholder="URL lokacije" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mjesto</label>
+                            <select name="place_id" class="custom-select rounded-0 s2-places">
+                                @foreach($places as $place)
+                                    <option value="{{ $place->id }}"
+                                        @if($place->id == $location->place_id)
+                                            selected
+                                        @endif
+                                        >{{ $place->place_name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -55,33 +73,13 @@
                 </div>
             </div>
         </div>
-
-        <div class="col col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Podaci scrape-a lokacije</h3>
-                </div>
-                <div class="card-body">
-                    <table>
-                        <tr>
-                            <th>Ukupan broj linkova</th>
-                            <td>{{ $total_link_count }}</td>
-                        <tr>
-                        <tr>
-                            <th>Broj linkova - 30 dana</th>
-                            <td>{{ $link_count_30_days }}</td>
-                        <tr>
-                        <tr>
-                            <th>Broj linkova - 60 dana</th>
-                            <td>{{ $link_count_60_days }}</td>
-                        <tr>
-                        <tr>
-                            <th>Broj linkova - 1 godina</th>
-                            <td>{{ $link_count_365_days }}</td>
-                        <tr>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function() {
+        $('.s2-places').select2();
+    });
+</script>
 @endsection

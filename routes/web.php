@@ -45,6 +45,14 @@ Route::prefix('countries')->group(function(){
     Route::post('/select', [CountryController::class, 'select'])->name('select-country');
 });
 
+Route::prefix('counties')->group(function(){
+    Route::get('/', [CountyController::class, 'index']);
+    Route::get('/create', [CountyController::class, 'create']);
+    Route::post('/store', [CountyController::class, 'store'])->name('store-county');
+    Route::get('/{id}/edit', [CountyController::class, 'edit']);
+    Route::get('/update', [CountyController::class, 'update'])->name('update-county');
+});
+
 Route::prefix('places')->group(function(){
     Route::get('/', [PlaceController::class, 'index']);
     Route::get('/create', [PlaceController::class, 'create']);

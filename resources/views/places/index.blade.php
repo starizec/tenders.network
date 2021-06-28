@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $place->id }}</td>
                                     <td><b>{{ $place->place_name }}</b></td>
-                                    <td></td>
+                                    <td>{{ $place->county->county_name }}</td>
                                     <td><a href="/places/{{ $place->id }}/edit"><i class="fa fa-edit"></i></a></td>
                                 </tr>
                             @endforeach

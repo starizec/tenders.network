@@ -51,7 +51,7 @@ Route::prefix('counties')->group(function(){
     Route::get('/create', [CountyController::class, 'create']);
     Route::post('/store', [CountyController::class, 'store'])->name('store-county');
     Route::get('/{id}/edit', [CountyController::class, 'edit']);
-    Route::get('/update', [CountyController::class, 'update'])->name('update-county');
+    Route::post('/update', [CountyController::class, 'update'])->name('update-county');
 });
 
 Route::prefix('places')->group(function(){
@@ -59,5 +59,5 @@ Route::prefix('places')->group(function(){
     Route::get('/create', [PlaceController::class, 'create']);
     Route::post('/store', [PlaceController::class, 'store'])->name('store-place');
     Route::get('/{id}/edit', [PlaceController::class, 'edit']);
-    Route::get('/update', [PlaceController::class, 'update'])->name('update-place');
+    Route::post('/update', [PlaceController::class, 'update'])->name('update-place');
 });

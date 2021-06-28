@@ -27,7 +27,15 @@
                             <input type="text" name="place_name" class="form-control" autocomplete="off">
                         </div>
 
-                       
+                        <div class="form-group">
+                            <label>Županija</label>
+                            <select name="county_id" class="custom-select rounded-0">
+                                @foreach($counties as $county)
+                                    <option value="{{ $county->id }}">{{ $county->county_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                 </div>
                 <div class="card-footer d-flex">
                         <button type="submit" class="btn btn-primary">Dodaj</button>

@@ -13,7 +13,7 @@ class Place extends Model
         if($order == 'DESC'){
             return $this->where('country_id', $country_id)
                         ->orderByDesc($order_by)
-                        //->with('county')
+                        ->with('county')
                         ->paginate($per_page);
 
         }elseif($order == 'ASC'){

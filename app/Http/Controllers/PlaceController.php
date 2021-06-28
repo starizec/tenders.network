@@ -16,7 +16,7 @@ class PlaceController extends Controller
 
     public function create(County $county)
     {
-        return view('places.create', ['counties' => $county->getCounties()]);
+        return view('places.create', ['counties' => $county->getCounties(Session::get('country_id'))]);
     }
 
     public function store(Request $request, Place $place)
@@ -35,7 +35,7 @@ class PlaceController extends Controller
     public function edit(Place $place, County $county, $id)
     {
         return view('places.edit', ['place' => $place->getPlace($id),
-                                    'counties' => $county->getCounties()]);
+                                    'counties' => $county->getCounties(Session::get('country_id'))]);
     }
 
     public function update(Request $request, Place $place)

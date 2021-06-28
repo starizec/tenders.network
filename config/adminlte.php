@@ -251,20 +251,74 @@ return [
         ],
         ['header' => 'Lokacije'],
         [
-            'text' => 'Sve lokacije',
-            'url'  => '/locations',
+            'text' => 'Lokacije',
             'icon' => 'fas fa-fw fa-map-pin',
+            'submenu' => [
+                [
+                    'text' => 'Sve lokacije',
+                    'url'  => '/locations',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+            ]
+
         ],
-        ['header' => 'Države'],
+        
         [
-            'text' => 'Sve države',
-            'url'  => '/countries',
+            'text' => 'Države',
             'icon' => 'fas fa-fw fa-flag',
+            'submenu' => [
+                [
+                    'text' => 'Sve države',
+                    'url'  => '/countries',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj državu',
+                    'url'  => '/countries/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
         ],
+
         [
-            'text' => 'Dodaj državu',
-            'url'  => '/countries/create',
-            'icon' => 'fas fa-fw fa-plus',
+            'text' => 'Županije',
+            'icon' => 'fas fa-fw fa-map-marked-alt',
+            'submenu' => [
+                [
+                    'text' => 'Sve županije',
+                    'url'  => '/counties',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj županiju',
+                    'url'  => '/counties/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
+        ],
+
+        [
+            'text' => 'Mjesta',
+            'icon' => 'fas fa-fw fa-map-marker-alt',
+            'submenu' => [
+                [
+                    'text' => 'Sva mjesta',
+                    'url'  => '/places',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj mjesto',
+                    'url'  => '/countries/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
         ],
     ],
 

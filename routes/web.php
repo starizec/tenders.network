@@ -7,6 +7,7 @@ use App\Http\Controllers\ScrapeLocationController;
 use App\Http\Controllers\ScrapeDataController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\PlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\CountryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/scrapes');
 });
 
 Route::prefix('scrapes')->group(function(){
@@ -42,4 +43,12 @@ Route::prefix('countries')->group(function(){
     Route::get('/{id}/edit', [CountryController::class, 'edit']);
     Route::post('/update', [CountryController::class, 'update'])->name('update-country');
     Route::post('/select', [CountryController::class, 'select'])->name('select-country');
+});
+
+Route::prefix('places')->group(function(){
+    Route::get('/', [PlaceController::class, 'index']);
+    Route::get('/create', [PlaceController::class, 'create']);
+    Route::post('/store', [PlaceController::class, 'store'])->name('store-place');
+    Route::get('/{id}/edit', [PlaceController::class, 'edit']);
+    Route::get('/update', [PlaceController::class, 'update'])->name('update-place');
 });

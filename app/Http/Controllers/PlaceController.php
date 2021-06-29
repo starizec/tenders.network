@@ -41,8 +41,7 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place)
     {
         $place->where('id', $request->place_id)
-              ->update(['country_id' => $request->country_id,
-                        'place_name' => $request->place_name,
+              ->update(['place_name' => $request->place_name,
                         'county_id' => $request->county_id,
                         'updated_by' => 1]);
         

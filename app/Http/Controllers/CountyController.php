@@ -31,16 +31,13 @@ class CountyController extends Controller
     }
 
     public function edit(County $county, $id)
-    {
+    {   
         return view('counties.edit', ['county' => $county->getCounty($id)]);
     }
 
     public function update(Request $request, County $county)
     {
-        $county->where('id', $request->county_id)
-               ->update(['country_id' => $request->country_id,
-                         'county_name' => $request->county_name,
-                         'updated_by' => 1]);
+        $county->updateCounty($request->county_id, $request->county_name, $request->country_id);
 
         return back();
     }

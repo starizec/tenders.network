@@ -12,7 +12,7 @@ use Session;
 class LocationController extends Controller
 {
     public function index(Location $location)
-    {   
+    {
         return view('locations.index', ['locations' => $location->getLocations(Session::get('country_id'))]);
     }
 

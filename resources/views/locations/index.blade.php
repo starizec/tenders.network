@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ $location->id }}</td>
                                     <td><b>{{ $location->location_name }}</b> <br> 
-                                        <small>{{ $location->location_name }}</small></td>
+                                        <small>{{ $location->place_name }} - {{ $location->county_name }}</small></td>
                                     <td><a href="/locations/{{ $location->id }}/edit"><i class="fa fa-edit"></i></a></td>
                                 </tr>
                             @endforeach

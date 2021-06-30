@@ -35,6 +35,8 @@ Route::prefix('locations')->group(function(){
     Route::get('/', [LocationController::class, 'index']);
     Route::get('/{id}/edit', [LocationController::class, 'edit']);
     Route::post('/update', [LocationController::class, 'update'])->name('update-location');
+    Route::get('/create', [LocationController::class, 'create']);
+    Route::post('/store', [LocationController::class, 'store'])->name('store-location');
 });
 
 Route::prefix('countries')->group(function(){

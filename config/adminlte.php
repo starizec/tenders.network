@@ -249,6 +249,7 @@ return [
             'url'  => '/scrapes',
             'icon' => 'fas fa-fw fa-search-plus',
         ],
+
         ['header' => 'Lokacije'],
         [
             'text' => 'Lokacije',
@@ -259,6 +260,12 @@ return [
                     'url'  => '/locations',
                     'icon' => 'fas fa-fw fa-list-ol',
                     'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj lokaciju',
+                    'url'  => '/locations/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
                 ],
             ]
 

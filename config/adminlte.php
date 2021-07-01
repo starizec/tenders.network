@@ -250,6 +250,18 @@ return [
             'icon' => 'fas fa-fw fa-search-plus',
         ],
 
+        ['header' => 'Natječaji'],
+        [
+            'text' => 'Svi natječaji',
+            'url'  => '/tenders',
+            'icon' => 'fas fa-fw fa-list',
+        ],
+        [
+            'text' => 'Dodaj natječaj',
+            'url'  => '/tenders/create',
+            'icon' => 'fas fa-fw fa-plus',
+        ],
+
         ['header' => 'Lokacije'],
         [
             'text' => 'Lokacije',

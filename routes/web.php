@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScrapeController;
 use App\Http\Controllers\ScrapeLocationController;
 use App\Http\Controllers\ScrapeDataController;
+use App\Http\Controllers\TenderController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
@@ -29,6 +30,12 @@ Route::prefix('scrapes')->group(function(){
     Route::get('/', [ScrapeController::class, 'index']);
     Route::get('/locations/{http_status_code}/{start}/{end}', [ScrapeLocationController::class, 'index']);
     Route::post('/scrape-data', [ScrapeDataController::class, 'download'])->name('download-scrape');
+});
+
+Route::prefix('tenders')->group(function(){
+    Route::get('/', [TenderController::class, 'index']);
+    Route::get('/create', [TenderController::class, 'create']);
+    Route::post('/store', [TenderController::class, 'store'])->name('store-tender');
 });
 
 Route::prefix('locations')->group(function(){

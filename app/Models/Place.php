@@ -26,4 +26,9 @@ class Place extends Model
     public function getPlace($id){
         return $this->where('id', $id)->first();
     }
+
+    public function county()
+    {
+        return $this->hasOne(County::class, 'id', 'county_id');
+    }
 }

@@ -35,7 +35,8 @@
                                     <td>{{ $tender->tender_value }}</td>
                                     <td></td>
                                     <td></td>
-                                    <td><td>{{ $tender->created_at }}</td></td>
+                                    <td></td>
+                                    <td>{{ date("d.m.Y", strtotime($tender->created_at)) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -9,11 +9,13 @@ class Country extends Model
 {
     use HasFactory;
 
-    public function getCountries(){
+    public function getCountries()
+    {
         return $this->all();
     }
 
-    public function getCountry($id){
+    public function getCountry($id)
+    {
         return $this->where('id', $id)->first();
     }
 }

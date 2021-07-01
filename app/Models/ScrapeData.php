@@ -15,7 +15,10 @@ class ScrapeData extends Model
         return $this->whereBetween('created_at', [$start, $end])->get();
     }
 
-    public function countScrapeData($days_no, $location_id = 'location_id'){
-        return $this->where('location_id', $location_id)->whereDate('created_at', '>=', Carbon::now()->subDays($days_no))->count();
+    public function countScrapeData($days_no, $location_id = 'location_id')
+    {
+        return $this->where('location_id', $location_id)
+                    ->whereDate('created_at', '>=', Carbon::now()->subDays($days_no))
+                    ->count();
     }
 }

@@ -9,21 +9,16 @@ class Place extends Model
 {
     use HasFactory;
 
-    public function getPlaces($country_id = 1, $per_page = '20', $order_by = 'id', $order = 'DESC'){
-        if($order == 'DESC'){
+    public function getPlaces($country_id = 1, $per_page = '20', $order_by = 'id', $direction = 'DESC')
+    {
             return $this->where('country_id', $country_id)
-                        ->orderByDesc($order_by)
+                        ->orderBy($order_by, $direction)
                         ->with('county')
                         ->paginate($per_page);
-
-        }elseif($order == 'ASC'){
-            return $this->where($country_id)
-                        ->orderBy($order_by)
-                        ->paginate($per_page);
-        }
     }
 
-    public function getPlace($id){
+    public function getPlace($id)
+    {
         return $this->where('id', $id)->first();
     }
 

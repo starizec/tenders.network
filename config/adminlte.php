@@ -309,6 +309,25 @@ return [
             ]
         ],
 
+        [
+            'text' => 'Oznake',
+            'icon' => 'fas fa-fw fa-tags',
+            'submenu' => [
+                [
+                    'text' => 'Sve oznake',
+                    'url'  => '/tags',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj oznaku',
+                    'url'  => '/tags/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
+        ],
+
         ['header' => 'Lokacije'],
         [
             'text' => 'Lokacije',

@@ -31,14 +31,15 @@ class CategoryController extends Controller
 
     public function edit(Category $category, $id)
     {
-        return view('types.edit', ['type' => $category->where('id', $id)->first()]);
+        return view('categories.edit', ['category' => $category->where('id', $id)->first()]);
     }
 
     public function update(Request $request, Category $category)
     {
-        $type->where('id', $request->category_id)
-             ->update(['type_name' => $request->category_name,
-                       'updated_by' => 1]);
+        $category->where('id', $request->category_id)
+                 ->update(['country_id' => $request->country_id,
+                           'category_name' => $request->category_name,
+                           'updated_by' => 1]);
 
         return back();
     }

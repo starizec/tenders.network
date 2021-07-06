@@ -9,6 +9,7 @@ use App\Http\Controllers\TenderController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
@@ -52,6 +53,15 @@ Route::prefix('categories')->group(function(){
     Route::post('/store', [CategoryController::class, 'store'])->name('store-category');
     Route::get('/{id}/edit', [CategoryController::class, 'edit']);
     Route::post('/update', [CategoryController::class, 'update'])->name('update-category');
+
+});
+
+Route::prefix('tags')->group(function(){
+    Route::get('/', [TagController::class, 'index']);
+    Route::get('/create', [TagController::class, 'create']);
+    Route::post('/store', [TagController::class, 'store'])->name('store-tag');
+    Route::get('/{id}/edit', [TagController::class, 'edit']);
+    Route::post('/update', [TagController::class, 'update'])->name('update-tag');
 
 });
 

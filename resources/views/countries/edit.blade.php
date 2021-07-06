@@ -27,6 +27,21 @@
                             <label>Jezik države</label>
                             <input type="text" name="country_language" class="form-control" maxlength="2" value="{{ $country->country_language }}" autocomplete="off">
                         </div>
+
+                        <div class="form-group">
+                            <label>Naziv valute</label>
+                            <input type="text" name="currency_name" class="form-control" value="{{ $country->currency_name }}" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>ISO 4217 valute</label>
+                            <input type="text" name="currency_iso" class="form-control" value="{{ $country->currency_iso }}" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Oznaka valute</label>
+                            <input type="text" name="currency_symbol" class="form-control" value="{{ $country->currency_symbol }}" autocomplete="off">
+                        </div>
                 </div>
                 <div class="card-footer d-flex">
                         <button type="submit" class="btn btn-primary">Izmjeni</button>

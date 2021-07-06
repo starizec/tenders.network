@@ -22,6 +22,9 @@ class CountryController extends Controller
     {
         $country->country_name = $request->country_name;
         $country->country_language = $request->country_language;
+        $country->currency_name = $request->currency_name;
+        $country->currency_iso = $request->currency_iso;
+        $country->currency_symbol = $request->currency_symbol;
         $country->created_by = 1;
         $country->updated_by = 1;
 
@@ -39,6 +42,9 @@ class CountryController extends Controller
     {
         $country->where('id', $request->country_id)->update(['country_name' => $request->country_name,
                                                              'country_language' => $request->country_language,
+                                                             'currency_name' => $request->currency_name,
+                                                             'currency_iso' => $request->currency_iso,
+                                                             'currency_symbol' => $request->currency_symbol,
                                                              'updated_by' => 1]);
 
         return back();

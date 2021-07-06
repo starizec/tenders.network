@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col col-lg-6">
+    <div class="col col-lg-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Sve države</h3>
@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>Naziv</th>
                         <th>Jezik</th>
+                        <th>valuta</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -29,6 +30,7 @@
                                 <td>{{ $country->id }}</td>
                                 <td><b>{{ $country->country_name }}</b></td>
                                 <td><b>{{ $country->country_language }}</b></td>
+                                <td><b>{{ $country->currency_name }}</b></td>
                                 <td><a href="/countries/{{ $country->id }}/edit"><i class="fa fa-edit"></i></a></td>
                             </tr>
                         @endforeach

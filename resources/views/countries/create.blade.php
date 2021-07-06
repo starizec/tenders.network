@@ -26,6 +26,21 @@
                             <label>Jezik države</label>
                             <input type="text" name="country_language" class="form-control" maxlength="2" autocomplete="off">
                         </div>
+
+                        <div class="form-group">
+                            <label>Naziv valute</label>
+                            <input type="text" name="currency_name" class="form-control" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>ISO 4217 valute</label>
+                            <input type="text" name="currency_iso" class="form-control" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Oznaka valute</label>
+                            <input type="text" name="currency_symbol" class="form-control" autocomplete="off">
+                        </div>
                 </div>
                 <div class="card-footer d-flex">
                         <button type="submit" class="btn btn-primary">Dodaj</button>

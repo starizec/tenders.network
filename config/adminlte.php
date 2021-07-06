@@ -290,6 +290,25 @@ return [
             ]
         ],
 
+        [
+            'text' => 'Kategorije',
+            'icon' => 'fas fa-fw fa-sitemap',
+            'submenu' => [
+                [
+                    'text' => 'Sve kategorije',
+                    'url'  => '/categories',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj kategoriju',
+                    'url'  => '/categories/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
+        ],
+
         ['header' => 'Lokacije'],
         [
             'text' => 'Lokacije',

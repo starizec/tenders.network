@@ -8,6 +8,7 @@ use App\Http\Controllers\ScrapeDataController;
 use App\Http\Controllers\TenderController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\TypeController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
@@ -42,6 +43,15 @@ Route::prefix('types')->group(function(){
     Route::post('/store', [TypeController::class, 'store'])->name('store-type');
     Route::get('/{id}/edit', [TypeController::class, 'edit']);
     Route::post('/update', [TypeController::class, 'update'])->name('update-type');
+
+});
+
+Route::prefix('categories')->group(function(){
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/create', [CategoryController::class, 'create']);
+    Route::post('/store', [CategoryController::class, 'store'])->name('store-category');
+    Route::get('/{id}/edit', [CategoryController::class, 'edit']);
+    Route::post('/update', [CategoryController::class, 'update'])->name('update-category');
 
 });
 

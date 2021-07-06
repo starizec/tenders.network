@@ -7,20 +7,10 @@ use App\Http\Controllers\ScrapeLocationController;
 use App\Http\Controllers\ScrapeDataController;
 use App\Http\Controllers\TenderController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\TypeController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return redirect('/scrapes');
@@ -44,6 +34,15 @@ Route::prefix('locations')->group(function(){
     Route::post('/update', [LocationController::class, 'update'])->name('update-location');
     Route::get('/create', [LocationController::class, 'create']);
     Route::post('/store', [LocationController::class, 'store'])->name('store-location');
+});
+
+Route::prefix('types')->group(function(){
+    Route::get('/', [TypeController::class, 'index']);
+    Route::get('/create', [TypeController::class, 'create']);
+    Route::post('/store', [TypeController::class, 'store'])->name('store-type');
+    Route::get('/{id}/edit', [TypeController::class, 'edit']);
+    Route::post('/update', [TypeController::class, 'update'])->name('update-type');
+
 });
 
 Route::prefix('countries')->group(function(){

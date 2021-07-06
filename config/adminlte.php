@@ -251,15 +251,43 @@ return [
         ],
 
         ['header' => 'Natječaji'],
+
         [
-            'text' => 'Svi natječaji',
-            'url'  => '/tenders',
+            'text' => 'Natječaji',
             'icon' => 'fas fa-fw fa-list',
+            'submenu' => [
+                [
+                    'text' => 'Svi natječaji',
+                    'url'  => '/tenders',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj natječaj',
+                    'url'  => '/tenders/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
         ],
+
         [
-            'text' => 'Dodaj natječaj',
-            'url'  => '/tenders/create',
-            'icon' => 'fas fa-fw fa-plus',
+            'text' => 'Vrste',
+            'icon' => 'fas fa-fw fa-filter',
+            'submenu' => [
+                [
+                    'text' => 'Sve vrste natječaja',
+                    'url'  => '/types',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj vrstu natječaja',
+                    'url'  => '/types/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
         ],
 
         ['header' => 'Lokacije'],
@@ -280,7 +308,6 @@ return [
                     'icon_color' => 'success',
                 ],
             ]
-
         ],
         
         [

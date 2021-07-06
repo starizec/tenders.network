@@ -404,6 +404,26 @@ return [
                 ],
             ]
         ],
+
+        ['header' => 'Partneri'],
+        [
+            'text' => 'Partneri',
+            'icon' => 'fas fa-fw fa-handshake',
+            'submenu' => [
+                [
+                    'text' => 'Svi partneri',
+                    'url'  => '/partners',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj partnera',
+                    'url'  => '/partners/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
+        ],
     ],
 
     /*
@@ -508,6 +528,27 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        [
+        'name' => 'Summernote',
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/lang/summernote-hr-HR.min.js',
                 ],
             ],
         ],

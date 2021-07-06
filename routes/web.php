@@ -13,6 +13,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\PartnerController;
 
 Route::get('/', function () {
     return redirect('/scrapes');
@@ -88,4 +89,12 @@ Route::prefix('places')->group(function(){
     Route::post('/store', [PlaceController::class, 'store'])->name('store-place');
     Route::get('/{id}/edit', [PlaceController::class, 'edit']);
     Route::post('/update', [PlaceController::class, 'update'])->name('update-place');
+});
+
+Route::prefix('partners')->group(function(){
+    Route::get('/', [PartnerController::class, 'index']);
+    Route::get('/create', [PartnerController::class, 'create']);
+    Route::post('/store', [PartnerController::class, 'store'])->name('store-partner');
+    Route::get('/{id}/edit', [PartnerController::class, 'edit']);
+    Route::post('/update', [PartnerController::class, 'update'])->name('update-partner');
 });

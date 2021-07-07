@@ -7,6 +7,9 @@
 @stop
 
 @section('content')
+
+    @include('inc.select_country')
+
     <div class="row">
         <div class="col col-lg-12">
             <div class="card">

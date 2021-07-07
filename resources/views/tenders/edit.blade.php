@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dodaj natječaj')
+@section('title', 'Izmjeni natječaj')
 
 @section('content_header')
-    <h1>Dodavanje natječaja</h1>
+    <h1>{{ $tender->tender_title }}</h1>
 @stop
 
 @section('content')
@@ -11,36 +11,41 @@
         <div class="col col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Dodaj natječaj</h3>
+                    <h3 class="card-title">Izmjeni natječaj</h3>
                 </div>
                 <div class="card-body row">
                     <!-- tender info -->
                     <div class="col-lg-4">
-                    <form action="{{ route('store-tender') }}" method="POST">
+                    <form action="{{ route('update-tender') }}" method="POST">
                         @csrf
                         
                         <input type="hidden" name="country_id" value="{{ Session::get('country_id') }}">
+                        <input type="hidden" name="tender_id" value="{{ $tender->id }}">
 
                         <div class="form-group">
                             <label>Naslov natječaja</label>
-                            <input type="text" name="tender_title" class="form-control" autocomplete="off">
+                            <input value="{{ $tender->tender_title }}" type="text" name="tender_title" class="form-control" autocomplete="off">
                         </div>
 
                         <div class="form-group">
                             <label>Poveznica na natječaj</label>
-                            <input type="text" name="tender_url" id="tender_url" class="form-control" autocomplete="off">
+                            <input value="{{ $tender->tender_url }}" type="text" name="tender_url" id="tender_url" class="form-control" autocomplete="off">
                         </div>
 
                         <div class="form-group">
                             <label>Vrijednost natječaja</label>
-                            <input type="text" name="tender_value" class="form-control" autocomplete="off">
+                            <input value="{{ $tender->tender_value }}" type="text" name="tender_value" class="form-control" autocomplete="off">
                         </div>
 
                         <div class="form-group">
                             <label>Lokacija natječaja</label>
                             <select name="location_id" class="custom-select rounded-0 s2-locations">
                                 @foreach($locations as $location)
-                                    <option value="{{ $location->id }}">{{ $location->location_name }} - {{ $location->location_url }}</option>
+                                    <option value="{{ $location->id }}"
+                                        @if($tender->location_id == $location->id)
+                                            selected
+                                        @endif
+                                        >{{ $location->location_name }} - {{ $location->location_url }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -53,7 +58,11 @@
                             <label>Vrsta natječaja</label>
                             @foreach($types as $type)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_type_{{ $type->id }}" name="tender_types[]" value="{{ $type->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_type_{{ $type->id }}" name="tender_types[]" value="{{ $type->id }}"
+                                        @foreach($tender->types as $tender_type)
+                                            {{ $tender_type->id ===  $type->id ? 'checked' : ''}}
+                                        @endforeach
+                                    >
                                     <label class="form-check-label" for="tender_type_{{ $type->id }}">{{ $type->type_name }}</label>
                                 </div>
                             @endforeach
@@ -65,7 +74,11 @@
                             <label>Kategorija natječaja</label>
                             @foreach($categories as $category)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_category_{{ $category->id }}" name="tender_categories[]" value="{{ $category->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_category_{{ $category->id }}" name="tender_categories[]" value="{{ $category->id }}" 
+                                        @foreach($tender->categories as $tender_category)
+                                            {{ $tender_category->id ===  $category->id ? 'checked' : ''}}
+                                        @endforeach
+                                    >
                                     <label class="form-check-label" for="tender_category_{{ $category->id }}">{{ $category->category_name }}</label>
                                 </div>
                             @endforeach
@@ -79,7 +92,11 @@
                             <label>Vrsta natječaja</label>
                             @foreach($tags as $tag)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_tag_{{ $tag->id }}" name="tender_tags[]" value="{{ $tag->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_tag_{{ $tag->id }}" name="tender_tags[]" value="{{ $tag->id }}" 
+                                        @foreach($tender->tags as $tender_tag)
+                                            {{ $tender_tag->id ===  $tag->id ? 'checked' : ''}}
+                                        @endforeach
+                                    >
                                     <label class="form-check-label" for="tender_tag_{{ $tag->id }}">{{ $tag->tag_name }}</label>
                                 </div>
                             @endforeach
@@ -88,7 +105,7 @@
                     <!-- /tender tag -->
                 </div>
                 <div class="card-footer d-flex">
-                        <button type="submit" class="btn btn-primary">Dodaj</button>
+                        <button type="submit" class="btn btn-primary">Izmjeni</button>
                     </form>
                 </div>
             </div>

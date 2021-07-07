@@ -29,6 +29,8 @@ Route::prefix('tenders')->group(function(){
     Route::get('/', [TenderController::class, 'index']);
     Route::get('/create', [TenderController::class, 'create']);
     Route::post('/store', [TenderController::class, 'store'])->name('store-tender');
+    Route::get('/{id}/edit', [TenderController::class, 'edit']);
+    Route::post('/update', [TenderController::class, 'update'])->name('update-tender');
 });
 
 Route::prefix('locations')->group(function(){

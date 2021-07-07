@@ -16,7 +16,7 @@ class CreateTenderTagsTable extends Migration
         Schema::create('tender_tags', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('tender_id');
-            $table->integer('type_id');
+            $table->integer('tag_id');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateTenderCategoriesTable extends Migration
         Schema::create('tender_categories', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('tender_id');
-            $table->integer('type_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

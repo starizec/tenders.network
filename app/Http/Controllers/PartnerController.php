@@ -21,6 +21,7 @@ class PartnerController extends Controller
     public function store(Request $request, Partner $partner)
     {
         $partner->partner_name = $request->partner_name;
+        $partner->partner_url = $request->partner_url;
         $partner->partner_owner = $request->partner_owner;
         $partner->partner_email = $request->partner_email;
         $partner->country_id = $request->country_id;
@@ -43,6 +44,7 @@ class PartnerController extends Controller
         $partner->where('id', $request->partner_id)
                 ->update([
                     'partner_name' =>  $request->partner_name,
+                    'partner_url' =>  $request->partner_url,
                     'partner_owner' =>  $request->partner_owner,
                     'partner_email' =>  $request->partner_email,
                     'country_id' =>  $request->country_id,

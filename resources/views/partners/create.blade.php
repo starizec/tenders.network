@@ -23,6 +23,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>URL partner stranice</label>
+                            <input type="text" name="partner_url" class="form-control" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
                             <label>Ime i prezime vlasnika</label>
                             <input type="text" name="partner_owner" class="form-control" autocomplete="off">
                         </div>

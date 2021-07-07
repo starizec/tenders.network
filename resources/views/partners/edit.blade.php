@@ -25,6 +25,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>URL partner stranice</label>
+                            <input value="{{ $partner->partner_url }}" type="text" name="partner_url" class="form-control" autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
                             <label>Ime i prezime vlasnika</label>
                             <input value="{{ $partner->partner_owner }}" type="text" name="partner_owner" class="form-control" autocomplete="off">
                         </div>

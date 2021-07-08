@@ -56,7 +56,7 @@
                             <label>Vrsta natječaja</label>
                             @foreach($types as $type)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_type_{{ $type->id }}" name="tender_types[]" value="{{ $type->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_type_{{ $type->id }}" name="tender_types[]" value="{{ $type->id }}">
                                     <label class="form-check-label" for="tender_type_{{ $type->id }}">{{ $type->type_name }}</label>
                                 </div>
                             @endforeach
@@ -68,7 +68,7 @@
                             <label>Kategorija natječaja</label>
                             @foreach($categories as $category)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_category_{{ $category->id }}" name="tender_categories[]" value="{{ $category->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_category_{{ $category->id }}" name="tender_categories[]" value="{{ $category->id }}">
                                     <label class="form-check-label" for="tender_category_{{ $category->id }}">{{ $category->category_name }}</label>
                                 </div>
                             @endforeach
@@ -82,7 +82,7 @@
                             <label>Vrsta natječaja</label>
                             @foreach($tags as $tag)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="tender_tag_{{ $tag->id }}" name="tender_tags[]" value="{{ $tag->id }}" checked>
+                                    <input class="form-check-input" type="checkbox" id="tender_tag_{{ $tag->id }}" name="tender_tags[]" value="{{ $tag->id }}">
                                     <label class="form-check-label" for="tender_tag_{{ $tag->id }}">{{ $tag->tag_name }}</label>
                                 </div>
                             @endforeach

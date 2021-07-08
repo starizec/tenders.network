@@ -22,7 +22,7 @@ class MediaFileController extends Controller
     {
         $request->file('media_file')->store('files');
 
-        return redirect('/media/create');
+        return redirect('/media');
     }
 
     /**

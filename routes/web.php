@@ -14,6 +14,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\MediaFileController;
 
 Route::get('/', function () {
     return redirect('/scrapes');
@@ -31,6 +32,7 @@ Route::prefix('tenders')->group(function(){
     Route::post('/store', [TenderController::class, 'store'])->name('store-tender');
     Route::get('/{id}/edit', [TenderController::class, 'edit']);
     Route::post('/update', [TenderController::class, 'update'])->name('update-tender');
+    Route::post('/removefile', [TenderController::class, 'removeFile'])->name('remove-file');
 });
 
 Route::prefix('locations')->group(function(){
@@ -100,4 +102,9 @@ Route::prefix('partners')->group(function(){
     Route::post('/store', [PartnerController::class, 'store'])->name('store-partner');
     Route::get('/{id}/edit', [PartnerController::class, 'edit']);
     Route::post('/update', [PartnerController::class, 'update'])->name('update-partner');
+});
+
+Route::prefix('media')->group(function(){
+    Route::get('/create', [MediaFileController::class, 'create']);
+    Route::post('/store', [MediaFileController::class, 'store'])->name('store-media');
 });

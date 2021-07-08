@@ -19,7 +19,7 @@
                 <div class="card-body row">
                     <!-- tender info -->
                     <div class="col-lg-4">
-                    <form action="{{ route('update-tender') }}" method="POST">
+                    <form action="{{ route('update-tender') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         
                         <input type="hidden" name="country_id" value="{{ Session::get('country_id') }}">
@@ -106,6 +106,38 @@
                         </div>
                     </div>
                     <!-- /tender tag -->
+
+                    <!-- tender content -->
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label>Sadržaj natječaja</label>
+                                <textarea id="summernote" name="tender_content">
+                                    @if($tender_content->tender_content != null)
+                                        {!! $tender_content->tender_content !!}
+                                    @endif
+                                </textarea>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Datoteka natječaja</label>
+
+                            @if($tender_content->tender_file != null)
+                                <div class="alert alert-info">
+                                    <i class="fas fa-fw fa-file"></i> {{ $tender_content->tender_file }}
+                                    <button type="submit" class="close" name="remove_file" value="remove_file">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="tender_file" id="tender_file">
+                                <label class="custom-file-label" for="tender_file">Dodaj datoteku</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /tender content -->
                 </div>
                 <div class="card-footer d-flex">
                         <button type="submit" class="btn btn-primary">Izmjeni</button>
@@ -138,5 +170,9 @@
             document.getElementById("submit-location").disabled = true
         }
     }
+
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
     </script>
 @endsection

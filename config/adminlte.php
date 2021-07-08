@@ -430,6 +430,26 @@ return [
                 ],
             ]
         ],
+
+        ['header' => 'Ostalo'],
+        [
+            'text' => 'Mediji',
+            'icon' => 'fas fa-fw fa-photo-video',
+            'submenu' => [
+                [
+                    'text' => 'Sve datoteke',
+                    'url'  => '/media',
+                    'icon' => 'fas fa-fw fa-list-ol',
+                    'icon_color' => 'primary',
+                ],
+                [
+                    'text' => 'Dodaj datoteku',
+                    'url'  => '/media/create',
+                    'icon' => 'fas fa-fw fa-plus',
+                    'icon_color' => 'success',
+                ],
+            ]
+        ],
     ],
 
     /*

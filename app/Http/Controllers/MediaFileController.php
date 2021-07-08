@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\TenderContent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MediaFileController extends Controller
 {
     public function index()
     {
-        //
+        return view('media.index', ['files' => Storage::files('files')]);
     }
 
     public function create()

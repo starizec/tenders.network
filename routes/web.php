@@ -105,6 +105,7 @@ Route::prefix('partners')->group(function(){
 });
 
 Route::prefix('media')->group(function(){
+    Route::get('/', [MediaFileController::class, 'index']);
     Route::get('/create', [MediaFileController::class, 'create']);
     Route::post('/store', [MediaFileController::class, 'store'])->name('store-media');
 });

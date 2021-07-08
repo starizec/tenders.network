@@ -73,4 +73,11 @@ class LocationController extends Controller
 
         return redirect('/locations');
     }
+
+    public function fastSearch()
+    {
+        return view('locations.fast_search', ['locations' => Location::select('id', 'location_name', 'location_url')
+                                                                     ->where('country_id', Session::get('country_id'))
+                                                                     ->get()]);
+    }
 }

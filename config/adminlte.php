@@ -345,6 +345,12 @@ return [
                     'icon' => 'fas fa-fw fa-plus',
                     'icon_color' => 'success',
                 ],
+                [
+                    'text' => 'Brzo pretraživanje',
+                    'url'  => '/locations/fastsearch',
+                    'icon' => 'fas fa-fw fa-search-plus',
+                    'icon_color' => 'warning',
+                ],
             ]
         ],
         

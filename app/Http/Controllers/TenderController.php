@@ -18,7 +18,7 @@ class TenderController extends Controller
 {
     public function index(Tender $tender)
     {
-        return view('tenders.index', ['tenders' => $tender->getTenders(Session::get('country_id'))]);
+        return view('tenders.index', ['tenders' => $tender->getTenders(Session::get('country_id'), 100)]);
     }
 
     public function create()
@@ -106,17 +106,32 @@ class TenderController extends Controller
                          'updated_by' => 1]);
 
         if($request->filled('tender_content') || $request->hasFile('tender_file')){
+            if (TenderContent::where('tender_id', $request->tender_id)->exists()){
+                if($request->hasFile('tender_file')){
+                    $tender_file_path = $request->file('tender_file')->store('files');
+                }else{
+                    $tender_file_path = TenderContent::where('tender_id', $request->tender_id)
+                                                     ->select('tender_file')
+                                                     ->first();
 
-            if($request->hasFile('tender_file')){
-                $tender_file_path = $request->file('tender_file')->store('files');
+                    $tender_file_path = $tender_file_path->tender_file;
+                }
+
+                TenderContent::where('tender_id', $request->tender_id)
+                             ->update(['tender_content' => $request->tender_content,
+                                       'tender_file' => $tender_file_path,
+                                       'updated_by' => 1]);
+
             }else{
-                $tender_file_path = null;
+                $tender_content = new TenderContent();
+                $tender_content->tender_id = $request->tender_id;
+                $tender_content->tender_content = $request->tender_content;
+                $tender_content->tender_file = $request->file('tender_file')->store('files');
+                $tender_content->created_by = 1;
+                $tender_content->updated_by = 1;
+                $tender_content->save();
             }
 
-            TenderContent::where('tender_id', $request->tender_id)
-                         ->update(['tender_content' => $request->tender_content,
-                                   'tender_file' => $tender_file_path,
-                                   'updated_by' => 1]);
         }
         
         $tender_type = new TenderType();
@@ -152,5 +167,67 @@ class TenderController extends Controller
                      ->update(['tender_file' => null]);
 
         return back();
+    }
+
+    public function upload()
+    {
+        return view('tenders.upload');
+    }
+
+    public function doUpload(Request $request)
+    {
+        if(!$request->has('tenders_csv')){
+            return back();
+        }
+
+        $path = $request->file('tenders_csv')->getRealPath();
+        $tenders = array_map('str_getcsv', file($path));
+
+        foreach($tenders as $tender){
+            if($tender[0] == null){
+                break;
+            }
+
+            $new_tender = new Tender();
+            $new_tender->country_id = $request->country_id;
+            $new_tender->location_id = (integer)$tender[0];
+            $new_tender->tender_url = $tender[1];
+            $new_tender->tender_title = $tender[2];
+            $new_tender->created_by = 1;
+            $new_tender->updated_by = 1;
+            $new_tender->tender_value = (empty(trim($tender[6]))) ? null : $tender[6];
+            $new_tender->created_at = $request->input('date');
+
+            $new_tender->save();
+
+            //store tender categories
+            $tender_categories = explode(',', $tender[3]);
+
+            foreach($tender_categories as $category){
+                $tender_category = new TenderCategory();
+
+                $tender_category->storeTenderCategory($new_tender->id, $category);
+            }
+
+            //store tender tags
+            $tender_tags = explode(',', $tender[4]);
+
+            foreach($tender_tags as $tag){
+                $tender_tag = new TenderTag();
+
+                $tender_tag->storeTenderTag($new_tender->id, $tag);
+            }
+
+            //store tender types
+            $tender_types = explode(',', $tender[5]);
+
+            foreach($tender_types as $type){
+                $tender_type = new TenderType();
+
+                $tender_type->storeTenderType($new_tender->id, $type);
+            }
+        }
+
+        return redirect('/tenders');
     }
 }

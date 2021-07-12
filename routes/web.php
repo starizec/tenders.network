@@ -33,6 +33,8 @@ Route::prefix('tenders')->group(function(){
     Route::get('/{id}/edit', [TenderController::class, 'edit']);
     Route::post('/update', [TenderController::class, 'update'])->name('update-tender');
     Route::post('/removefile', [TenderController::class, 'removeFile'])->name('remove-file');
+    Route::get('/upload', [TenderController::class, 'upload']);
+    Route::post('/uploadTenders', [TenderController::class, 'doUpload'])->name('upload-tenders');
 });
 
 Route::prefix('locations')->group(function(){

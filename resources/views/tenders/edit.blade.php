@@ -112,8 +112,10 @@
                         <div class="form-group">
                             <label>Sadržaj natječaja</label>
                                 <textarea id="summernote" name="tender_content">
-                                    @if($tender_content->tender_content != null)
-                                        {!! $tender_content->tender_content !!}
+                                    @if($tender_content)
+                                        @if($tender_content->tender_content)
+                                            {!! $tender_content->tender_content !!}
+                                        @endif
                                     @endif
                                 </textarea>
                             </select>
@@ -121,14 +123,15 @@
 
                         <div class="form-group">
                             <label>Datoteka natječaja</label>
-
-                            @if($tender_content->tender_file != null)
-                                <div class="alert alert-info">
-                                    <i class="fas fa-fw fa-file"></i> {{ $tender_content->tender_file }}
-                                    <button type="submit" class="close" name="remove_file" value="remove_file">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                            @if($tender_content)
+                                @if($tender_content->tender_file != null)
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-fw fa-file"></i> {{ $tender_content->tender_file }}
+                                        <button type="submit" class="close" name="remove_file" value="remove_file">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                @endif
                             @endif
 
                             <div class="custom-file">

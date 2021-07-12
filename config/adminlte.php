@@ -268,6 +268,12 @@ return [
                     'icon' => 'fas fa-fw fa-plus',
                     'icon_color' => 'success',
                 ],
+                [
+                    'text' => 'Prenesi natječaje',
+                    'url'  => '/tenders/upload',
+                    'icon' => 'fas fa-fw fa-upload',
+                    'icon_color' => 'warning',
+                ],
             ]
         ],
 

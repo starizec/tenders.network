@@ -22,6 +22,18 @@ class LocationController extends Controller
                                        'places' => $place->where('country_id', Session::get('country_id'))->get()]);
     }
 
+    public function update(Request $request, Location $location)
+    {
+        $location->where('id', $request->location_id)
+                 ->update(['location_url' => $request->location_url,
+                           'location_name' => $request->location_name,
+                           'place_id' => $request->place_id,
+                           'location_status' => $request->location_status,
+                           'updated_by' => 1]);
+
+        return back();
+    }
+
     public function create(Place $place, County $county)
     {
         return view('locations.create', ['places' => $place->where('country_id', Session::get('country_id'))->with('county')->get(),

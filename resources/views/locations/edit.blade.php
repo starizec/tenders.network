@@ -21,6 +21,7 @@
                         @csrf
 
                         <input type="hidden" name="country_id" value="{{ Session::get('country_id') }}">
+                        <input type="hidden" name="location_id" value="{{ $location->id }}">
                         
                         <div class="form-group">
                             <label>Naziv lokacije</label>
@@ -48,12 +49,12 @@
                         <div class="form-group">
                             <label>Status lokacije</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="location_status" 
+                                <input value="1" class="form-check-input" type="radio" name="location_status" 
                                 {{ $location->location_status === 1 ? 'checked' : '' }}>
                                 <label class="form-check-label">Aktivan</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="location_status"
+                                <input value="0" class="form-check-input" type="radio" name="location_status"
                                 {{ $location->location_status === 0 ? 'checked' : '' }}>
                                 <label class="form-check-label">Neaktivan</label>
                             </div>

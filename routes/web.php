@@ -14,6 +14,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CountyController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\MediaFileController;
 
 Route::get('/', function () {
@@ -104,6 +105,11 @@ Route::prefix('partners')->group(function(){
     Route::post('/store', [PartnerController::class, 'store'])->name('store-partner');
     Route::get('/{id}/edit', [PartnerController::class, 'edit']);
     Route::post('/update', [PartnerController::class, 'update'])->name('update-partner');
+});
+
+Route::prefix('settings')->group(function(){
+    Route::get('/{partner_id}/menu', [SettingController::class, 'menu']);
+    Route::post('/updateMenu', [SettingController::class, 'updateMenu'])->name('update-menu');
 });
 
 Route::prefix('media')->group(function(){

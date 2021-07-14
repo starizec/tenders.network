@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col col-lg-6">
+        <div class="col col-lg-8">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Izmjena partnera</h3>
@@ -66,6 +66,17 @@
                 </div>
             </div>
         </div>
+
+        <div class="col col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Opcije</h3>
+                </div>
+                <div class="card-body">
+                    <a href="/settings/{{ $partner->id }}/menu" class="btn btn-block btn-default">Menu</a>
+                    <a href="/settings/{{ $partner->id }}/colors" class="btn btn-block btn-default">Boje</a>
+                </div>
+            </div>
     </div>
 @endsection
 

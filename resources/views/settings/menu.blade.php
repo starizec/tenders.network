@@ -22,12 +22,14 @@
 
                     <div class="form-group">
                         <textarea class="form-control" id="menu" rows="16" name="setting_values"
-                        >@foreach(json_decode($menu->setting_values) as $item)
+                        >@if($menu)
+                            @foreach(json_decode($menu->setting_values) as $item)
                                 @foreach($item as $element)
                                     {{ $element }}{{ $loop->last ? '' : ',' }}
                                 @endforeach
                                     {{ $loop->last ? '' : '-' }}
                             @endforeach
+                        @endif
                         </textarea>
                     </div>
                 

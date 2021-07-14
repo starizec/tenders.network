@@ -16,7 +16,7 @@ class SettingController extends Controller
     }
 
     public function updateMenu(Request $request, Setting $setting)
-    {   
+    {
         $setting->updateOrCreate(['partner_id' => $request->partner_id, 'setting_name' => $request->setting_name],                               
                                  ['setting_values' => json_encode($this->formatMenuItems($request->setting_values))]);
 
@@ -25,6 +25,7 @@ class SettingController extends Controller
 
     public function formatMenuItems($values)
     {
+        $values = trim(preg_replace('/\s\s+/', ' ', $values));
         $items = explode('-', $values);
 
         foreach($items as $item){

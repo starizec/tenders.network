@@ -20,4 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/{id}/partners', [PartnerController::class, 'show']);
+Route::resource('/partners/{id}/show', [PartnerController::class, 'show']);

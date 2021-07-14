@@ -21,4 +21,9 @@ class Partner extends Model
     {
         return $this->hasOne(Country::class, 'id', 'country_id');
     }
+
+    public function settings()
+    {
+        return $this->hasOne(Setting::class, 'partner_id', 'id');
+    }
 }

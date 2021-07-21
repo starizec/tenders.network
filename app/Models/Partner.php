@@ -26,4 +26,24 @@ class Partner extends Model
     {
         return $this->hasOne(Setting::class, 'partner_id', 'id');
     }
+
+    public function types()
+    {
+        return $this->hasMany(Type::class, 'country_id', 'country_id');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'country_id', 'country_id');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany(Tag::class, 'country_id', 'country_id');
+    }
+
+    public function counties()
+    {
+        return $this->hasMany(County::class, 'country_id', 'country_id');
+    }
 }

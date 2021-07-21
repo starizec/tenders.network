@@ -5,19 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ApiControllers\PartnerController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/partners/{id}/show', [PartnerController::class, 'show']);
+Route::get('/partners/{partner_id}/menu',[PartnerController::class, 'menu']);
+Route::get('/partners/{partner_id}/filters',[PartnerController::class, 'filters']);

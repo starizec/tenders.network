@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['pivot'];
+
     public function getCategories($country_id = 1, $per_page = '20', $order_by = 'id', $direction = 'desc')
     {
         return $this->where('country_id', $country_id)

@@ -9,6 +9,8 @@ class Location extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['country_id', 'place_id', 'location_status', 'created_by', 'updated_by', 'created_at', 'updated_at'];
+
     public function getLocations($country_id = 1, $per_page = '20', $order_by = 'id', $order = 'desc')
     {
         return $this->leftJoin('places', 'places.id', '=', 'locations.place_id')
@@ -32,5 +34,15 @@ class Location extends Model
     public function delete()
     {
         $this->where('id', $id)->delete();
+    }
+
+    public function place()
+    {
+        return $this->hasOne(Place::class, 'id', 'place_id');
+    }
+
+    public function tender()
+    {
+        return $this->belongsTo(Tender::class, 'id', 'tender_id');
     }
 }

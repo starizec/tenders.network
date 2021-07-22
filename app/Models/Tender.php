@@ -9,13 +9,33 @@ class Tender extends Model
 {
     use HasFactory;
 
-    public function getTenders($country_id = 1, $per_page = '20', $order_by = 'id', $direction = 'desc')
+    public function getTenders($country_id = 1, 
+                               $per_page = '20', 
+                               $order_by = 'id', 
+                               $direction = 'desc', 
+                               $types = [1,2],
+                               $categories = [1,2],
+                               $tags = [1,2],
+                               $counties = [1,2,3])
     {
         return $this->where('country_id', $country_id)
-                    ->with('country')
-                    ->with('types')
-                    ->with('categories')
-                    ->with('tags')
+                    ->with('country:id,currency_symbol', 
+                           'types:id,type_name', 
+                           'categories:id,category_name', 
+                           'tags:id,tag_name', 
+                           'location.place.county')
+                    ->whereHas('types', function ($query) use ($types){
+                        $query->whereIn('types.id', $types);
+                    })
+                    ->whereHas('categories', function ($query) use ($categories){
+                        $query->whereIn('categories.id', $categories);
+                    })
+                    ->whereHas('tags', function ($query) use ($tags){
+                        $query->whereIn('tags.id', $tags);
+                    })
+                    ->whereHas('location.place.county', function($query) use ($counties){
+                        $query->whereIn('id', $counties);
+                    })
                     ->orderBy('tenders.'.$order_by, $direction)
                     ->paginate($per_page);
     }
@@ -48,5 +68,10 @@ class Tender extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, TenderTag::class, 'tender_id', 'tag_id');
+    }
+
+    public function location()
+    {
+        return $this->hasOne(Location::class, 'id', 'location_id');
     }
 }

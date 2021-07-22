@@ -15,10 +15,10 @@ class PartnerController extends Controller
 {
     public function menu($partner_id, Setting $setting)
     {
-        return Setting::where('setting_name', 'menu')
-                      ->where('partner_id', $partner_id)
-                      ->select('setting_values')
-                      ->first();
+        return response()->json(Setting::where('setting_name', 'menu')
+                                       ->where('partner_id', $partner_id)
+                                       ->select('setting_values')
+                                       ->first());
     }
 
     public function filters($partner_id, Setting $setting, Partner $partner)

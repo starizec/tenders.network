@@ -117,3 +117,6 @@ Route::prefix('media')->group(function(){
     Route::get('/create', [MediaFileController::class, 'create']);
     Route::post('/store', [MediaFileController::class, 'store'])->name('store-media');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

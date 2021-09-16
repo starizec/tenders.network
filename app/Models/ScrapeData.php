@@ -12,7 +12,9 @@ class ScrapeData extends Model
 
     public function getScrapeData($start, $end)
     {
-        return $this->whereBetween('created_at', [$start, $end])->get();
+        return $this->whereBetween('created_at', [$start, $end])
+                    ->where('scrape_url', 'not like', "%mailto%")
+                    ->get();
     }
 
     public function countScrapeData($days_no, $location_id = 'location_id')

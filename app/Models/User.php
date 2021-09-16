@@ -11,33 +11,32 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name',
+        'partner_id',
         'email',
         'password',
+        'filter',
+        'created_by',
+        'updated_by',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getAllFilters($country_id = 1)
+    {   
+        $filters = [];
+        $filters['types'] = Type::where('country_id', $country_id)->pluck('id')->toArray();
+        $filters['categories'] = Category::where('country_id', $country_id)->pluck('id')->toArray();
+        $filters['tags'] = Tag::where('country_id', $country_id)->pluck('id')->toArray();
+        $filters['counties'] = County::where('country_id', $country_id)->pluck('id')->toArray();
+
+        return base64_encode(serialize($filters));
+    }
 }

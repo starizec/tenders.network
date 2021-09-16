@@ -120,3 +120,5 @@ Route::prefix('media')->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/test', [App\Http\Controllers\ApiControllers\UserController::class, 'filters']);

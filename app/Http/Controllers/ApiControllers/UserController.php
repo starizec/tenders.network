@@ -18,8 +18,16 @@ class UserController extends Controller
 
     public function show($user_id, User $user)
     {
-        $user = $user->where('id', $user_id)->frist();
+        $user = $user->where('id', $user_id)->first();
 
-        return response()->json($user);
+        return response()->json($user,200, array(), JSON_UNESCAPED_SLASHES);
+    }
+
+    public function filter($user_id, User $user)
+    {
+        $user = $user->where('id', $user_id)->pluck('filter');
+        
+        $user = unserialize(base64_decode($user));
+        return response()->json($user, 200);
     }
 }

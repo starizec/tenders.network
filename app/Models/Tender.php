@@ -9,14 +9,14 @@ class Tender extends Model
 {
     use HasFactory;
 
-    public function getTenders($country_id = 1, 
+    public function getTenders($country_id,                                
+                               $types,
+                               $categories,
+                               $tags,
+                               $counties,
                                $per_page = '20', 
                                $order_by = 'id', 
-                               $direction = 'desc', 
-                               $types = [1,2],
-                               $categories = [1,2],
-                               $tags = [1,2],
-                               $counties = [1,2,3])
+                               $direction = 'desc',)
     {
         return $this->where('country_id', $country_id)
                     ->with('country:id,currency_symbol', 

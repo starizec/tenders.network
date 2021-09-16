@@ -20,6 +20,7 @@ class ScrapeExport implements FromCollection
         return ScrapeData::select('location_id', 'scrape_url', 'scrape_text')
                          ->whereBetween('created_at', [$this->start, $this->end])
                          ->where('country_id', Session::get('country_id'))
+                         ->where('scrape_url', 'not like', "%mailto%")
                          ->get();
     }
 }

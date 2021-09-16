@@ -21,6 +21,7 @@ class ScrapeData extends Model
     {
         return $this->where('location_id', $location_id)
                     ->whereDate('created_at', '>=', Carbon::now()->subDays($days_no))
+                    ->where('scrape_url', 'not like', "%mailto%")
                     ->count();
     }
 }

@@ -26,7 +26,7 @@
                       <th>Broj novih linkova</th>
                       <th>Trajanje scrape-a</th>
                       <th>404</th>
-                      <th>5xx</th>
+                     {{--  <th>5xx</th> --}}
                       <th></th>
                       <th></th>
                     </tr>
@@ -40,7 +40,7 @@
                               <td>{{ number_format($scrape->scrape_new_links_count) }}</td>
                               <td>{{ gmdate("H:i:s", round($scrape->scrape_time, 2)) }}</td>
                               <td><a href="/scrapes/locations/404/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><span class="badge bg-danger">{{ $scrape->scrape_404_count }}</span></a></td>
-                              <td><a href="/scrapes/locations/5xx/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><span class="badge bg-warning">{{ $scrape->scrape_5xx_count }}</span></a></td>
+                              {{-- <td><a href="/scrapes/locations/5xx/{{ urlencode($scrape->started_at) }}/{{ urlencode($scrape->ended_at) }}"><span class="badge bg-warning">{{ $scrape->scrape_5xx_count }}</span></a></td> --}}
                               <td>
                                 <form action="{{ route('download-scrape') }}" method="POST">
                                   @csrf
